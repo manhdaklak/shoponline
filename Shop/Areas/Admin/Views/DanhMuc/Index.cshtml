@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Model.EF.DanhMuc>
+
+@{
+
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p style="margin: 20px;">
+    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
+    @Html.ActionLink("Thêm Danh Mục", "ThemDanhMuc")
+</p>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Danh sách Danh Mục
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead style="width:auto;">
+                <tr>
+                    <th>Tên Danh Mục</th>
+                    <th>Tiêu Đề</th>
+                    <th>Ngày Tạo</th>
+                    <th>Ngày Thay Đổi</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="tr_@item.MaDM">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenDM)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TieuDe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayTao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayThayDoi)
+                        </td>
+                        @*<td>
+                            <a href="#" class="btn-active" data-id="@item.MaDM">@Html.Raw(item.TrangThai ? "<strong>Kích hoạt</strong>" : "Khoá")</a>
+                        </td>*@
+                        <td>
+                            @Html.ActionLink(" Cập nhật", "CapNhat", new { id = item.MaDM }) |
+                            @*<a href="javascript:Delete('@item.MaND','@item.TenDangNhap')"> Xóa</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+

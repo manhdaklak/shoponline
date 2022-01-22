@@ -1,0 +1,96 @@
+﻿@model List<Shop.Models.GioHangModel>
+@{
+
+    Layout = "/Views/Shared/_Layout.cshtml";
+    <script src="/Scripts/js/jquery.min.js"></script>
+    <script src="/assets/admin/js/cartController.js"></script>
+}
+<!-- Cart Start -->
+<div class="cart-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-page-inner">
+                    <div class="table-responsive">
+                        @if (Model.Count > 0)
+                        {
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>Sản Phẩm</th>
+                                        <th>Đơn giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng tiền</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="align-middle">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="img">
+                                                    <a href="#"><img src="@item.SanPham.AnhSP" alt="Image"></a>
+                                                    <p>@item.SanPham.TenSP</p>
+                                                </div>
+                                            </td>
+                                            <td id="DGSP_@item.SanPham.MaSP" class="txtDonGia">@item.SanPham.DonGia</td>
+                                            <td>
+                                                <div class="qty">
+                                                    <button class="btn-minus"><i class="fa fa-minus"></i></button>
+                                                    <input type="text" value="@item.SoLuong" data-price="@item.SanPham.DonGia" class="txtSoLuong" data-id="@item.SanPham.MaSP">
+                                                    <button class="btn-plus"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </td>
+                                            <td id="SP_@item.SanPham.MaSP">@(item.SoLuong * item.SanPham.DonGia)</td>
+                                            <td><button id="btnXoa" onclick="DeleteCard(@item.SanPham.MaSP)"><i class="fa fa-trash"></i></button></td>
+                                          
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <span>Chưa có sản phẩm nào</span>
+                        }
+                        <div class="cart-btn" style="margin-top:25px;">
+                            <button onclick="TiepTuc(this)"> Tiếp tục mua hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="cart-page-inner">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="coupon">
+                                <input type="text" placeholder="mã code">
+                                <button>Áp dụng mã</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="cart-summary">
+                                <div class="cart-content">
+                                    <h1>Giỏ Hàng</h1>
+                                    <p>Tổng phụ<span>@Model.Sum(x => x.SoLuong * x.SanPham.DonGia) VNĐ</span></p>
+                                    <p>Vận chuyển<span>0</span></p>
+                                    <h2>Tổng cộng<span>@Model.Sum(x => x.SoLuong * x.SanPham.DonGia) VNĐ</span></h2>
+                                </div>
+                                <div class="cart-btn">
+                                    <button>Cập nhật</button>
+                                    @*<a href="@Url.Action("ThanhToan","GioHang")">Thanh toán</a>*@
+
+                                    @*chèn link vào action click*@
+                                    <button onclick="window.location.href='@Url.Action("ThanhToan","GioHang")'">Thanh Toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart End -->

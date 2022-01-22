@@ -1,0 +1,228 @@
+﻿@{
+    ViewBag.Title = "Test";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="navbar quan-ly-mon-hoc">
+    <div class="nav quan-ly-mon-hoc-1">
+        <div class="col-sm-2 col-lg-2">
+            hhhh
+        </div>
+        <div class="col-sm-10 col-lg-10">
+            <div class="container mt-3">
+                <h2>Quản lý lớp học phần</h2>
+                <br />
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home">
+                            Môn
+                            Học/Học Phần
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#menu1">
+                            Danh Sách Môn
+                            Học/Học Phần
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="home" class="container tab-pane active">
+                        <br />
+                        <h3>Thông tin Môn Học/Học Phần</h3>
+                        <form action="" style="border: 1px solid black; padding: 10px;">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Mã Khoa/Viện: </label>
+                                        <select class="form-control" id="sel1">
+                                            <option>12345678</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Tên Khoa/ Viện:</label>
+                                        <select class="form-control" id="sel1">
+                                            <option>Công nghệ thông tin</option>
+                                            <option>Cơ điện tử</option>
+                                            <option>Quản trị kinh doanh</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Mã Chuyên Ngành: </label>
+                                        <select class="form-control" id="sel1">
+                                            <option>12222444</option>
+                                            <option>2555558</option>
+                                            <option>3777777</option>
+                                            <option>4777788</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Tên Chuyên Ngành: </label>
+                                        <select class="form-control" id="sel1">
+                                            <option>Kỹ thuật phần mềm</option>
+                                            <option>Khoa học dữ liệu</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Học Kỳ:</label>
+                                        <select class="form-control" id="sel1">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Học Phần Bắt Buộc/Tự Chọn:</label>
+                                        <select class="form-control" id="sel1">
+                                            <option>Bắt buộc</option>
+                                            <option>Tự Chọn</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Mã Môn Học/Học Phần tiên quyết:</label>
+                                        <select class="form-control" id="sel1">
+                                            <option>123444556</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Tên Môn Học/Học Phần Tiên Quyết:</label>
+                                        <select class="form-control" id="sel1">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Mã Môn Học/Học Phần:</label>
+                                        <input type="text" class="form-control" placeholder="12345678">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label for="sel1">Tên Môn Học/Học Phần:</label>
+                                        <input type="text" class="form-control" placeholder="Nhập môn lập trình" ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-primary">Primary</button>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-warning">Warning</button>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-danger">Danger</button>
+                                </div>
+                                <div class="col-lg-3">
+                                    <button type="button" class="btn btn-secondary">Secondary</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="menu1" class="container tab-pane fade">
+                        <br />
+                        <form action="">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table me-1"></i>
+                                    DataTable Example
+                                </div>
+                                <div class="card-body">
+                                    <table id="table_id">
+                                        <thead>
+                                            <tr>
+                                                <th>STT</th>
+                                                <th>Mã Học Phần</th>
+                                                <th>Tên Môn Học/Học phần</th>
+                                                <th>Tên Khoa/Viện</th>
+                                                <th>Tên Chuyên Ngành</th>
+                                                <th>Thao Tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>4200036779</td>
+                                                <td>Nhập môn tin học</td>
+                                                <td>Công nghệ thông tin</td>
+                                                <td>Kỹ thuật phần mềm</td>
+                                                <td colspan="3">
+                                                    <a href="#">Xem Chi tiết</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>4200036779</td>
+                                                <td>Nhập môn tin học</td>
+                                                <td>Công nghệ thông tin</td>
+                                                <td>Kỹ thuật phần mềm</td>
+                                                <td colspan="3">
+                                                    <a href="#">Xem Chi tiết</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>4200036779</td>
+                                                <td>Nhập môn lập trình</td>
+                                                <td>Công nghệ thông tin</td>
+                                                <td>Kỹ thuật phần mềm</td>
+                                                <td colspan="3">
+                                                    <a href="#">Xem Chi tiết</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>4200036779</td>
+                                                <td>Công ngệ mơi</td>
+                                                <td>Công nghệ thông tin</td>
+                                                <td>Kỹ thuật phần mềm</td>
+                                                <td colspan="3">
+                                                    <a href="#">Xem Chi tiết</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

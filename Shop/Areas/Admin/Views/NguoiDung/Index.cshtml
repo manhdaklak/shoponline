@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Model.EF.NguoiDung>
+
+@{
+    ViewBag.Title = "Danh sách";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    <script src="/Scripts/js/jquery-3.4.1.min.js"></script>
+    <script src="/assets/admin/js/userContronller.js"></script>
+    <script>
+        function Delete(id, name) {
+            if (confirm('Bạn có chắc muốn xóa: ' + name)) {
+                var form = new FormData();
+                form.append('id', id);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", domain + '/Admin/NguoiDung/Delete', true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var content = xhr.responseText;
+                        var json_ct = JSON.parse(content);
+                        if (json_ct.Data.status == "OK") {
+                            //Xóa rồi
+                            $('#tr_' + id).remove();
+                        } else {
+                            //Lỗi
+                            alert('Lỗi :' + json_ct.Data.message);
+                        }
+                    }
+                }
+                xhr.send(form);
+            }
+        }
+    </script>
+}
+<p style="margin: 20px;">
+    <span class="glyphicon glyphicon-star" aria-hidden="false"></span>
+    @Html.ActionLink("Thêm người dùng", "ThemNguoiDung")
+</p>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Danh sách người dùng
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead style="width:auto;">
+                <tr>
+                    <th>Tên người dùng</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Địa chỉ</th>
+                    <th>Trạng thái</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="tr_@item.MaND">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenND)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenDangNhap)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaChi)
+                        </td>
+                        <td>
+                            <a href="#" class="btn-active" data-id="@item.MaND">@Html.Raw(item.TrangThai ? "<strong>Kích hoạt</strong>" : "Khoá")</a>
+                        </td>
+                        <td>
+                            @Html.ActionLink(" Cập nhật", "CapNhat", new { id = item.MaND }) |
+                            <a href="javascript:Delete('@item.MaND','@item.TenDangNhap')"> Xóa</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+

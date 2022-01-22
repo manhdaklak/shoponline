@@ -1,0 +1,11 @@
+﻿@model List<Shop.Models.GioHangModel>
+    <div class="user">
+        <a href="@Url.Action("YeuThich","SanPham")" class="btn wishlist">
+            <i class="fa fa-heart"></i>
+            <span>(0)</span>
+        </a>
+        <a href="@Url.Action("GioHang","GioHang")" class="btn cart">
+            <i class="fa fa-shopping-cart"></i>
+            <span>(@Model.Count)</span>
+        </a>
+    </div>

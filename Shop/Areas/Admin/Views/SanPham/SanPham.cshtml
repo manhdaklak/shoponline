@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Model.EF.SanPham>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<p style="margin:20px;">
+    @Html.ActionLink("Thêm sản phẩm", "ThemSanPham")
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Danh sách sản phẩm
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead style="width:auto;">
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Ảnh</th>
+                    <th>Tiêu đề</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Ngày nhập</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            @*<tfoot>
+                    <tr>
+                        <th>Tên người dùng</th>
+                        <th>Số điện thoại</th>
+                        <th>Email</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Địa chỉ</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Quyền</th>
+                    </tr>
+                </tfoot>*@
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnhSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TieuDeSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DonGia)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayNhap)
+                        </td>
+
+                        @*<td>
+                                <a href="#" class="btn-active" data-id="@item.MaND">@Html.Raw(item.TrangThai ? "<strong>Kích hoạt</strong>" : "Khoá")</a>
+                            </td>*@
+
+                        <td>
+                            @Html.ActionLink("Cập nhật", "CapNhat", new { id = item.MaSP }) |
+                            @Html.ActionLink("Chi Tiết", "ChiTiet", new { id =item.MaSP}) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

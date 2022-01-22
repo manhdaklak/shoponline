@@ -1,0 +1,54 @@
+﻿<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a href="#" class="navbar-brand">MENU</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav mr-auto">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item active">@Html.ActionLink("Trang Chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item active">@Html.ActionLink("Sản Phẩm", "SanPham", "SanPham", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Liên Hệ", "LienHe", "LienHe", new { area = "" }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chính Sách</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        @Html.ActionLink("Hướng dẫn mua hàng", "HDMuaHang", "ChinhSach", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Chính sách thanh toán", "ThanhToan", "ChinhSach", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Chính Sách bảo mật", "BaoMat", "ChinhSach", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Chính Sách vận chuyển", "VanChuyen", "ChinhSach", new { area = "" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                 
+            </ul>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <div class="nav-item dropdown">
+                @{
+                    var session = (Shop.Common.ND_DangNhap)Session[Util.Constants.USER_SESSION];
+                }
+                @if (session == null)
+                {
+                    <ul class="navbar-nav m-auto">
+                        <li class="nav-item active">@Html.ActionLink("Đăng nhập |", "DangNhap", "TaiKhoan", new { area = "" }, new { @class = "nav-link" })</li>
+                        
+                        <li class="nav-item active">@Html.ActionLink("Đăng Ký", "DangKy", "TaiKhoan", new { area = "" }, new { @class = "nav-link" })</li>
+                    </ul>
+                }
+                else
+                {
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Xin Chào: @session.ten</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        @Html.ActionLink("Thông tin tài khoản", "TaiKhoan", "TaiKhoan", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Đăng Xuất","DangXuat","TaiKhoan", new { area = "" }, new { @class = "dropdown-item" })     
+                    </div>
+                </li>
+            </ul>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</nav>

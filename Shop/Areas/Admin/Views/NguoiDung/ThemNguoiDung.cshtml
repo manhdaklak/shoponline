@@ -1,0 +1,99 @@
+﻿@model  Shop.Areas.Admin.Model.NguoiDungModel
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Login.cshtml";
+}
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Tạo tài khoản</h3></div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="row mb-3">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @if (ViewBag.Success != null)
+                                {
+                                    <div class="alert alert-success">@ViewBag.Success</div>
+                                }
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        @Html.EditorFor(model => model.Ho, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ" }, id = "inputFirstName" })
+                                        @Html.ValidationMessageFor(model => model.Ho, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.Ho)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        @Html.EditorFor(model => model.Ten, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tên" }, id = "inputLastName" })
+                                        @Html.ValidationMessageFor(model => model.Ten, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.Ten)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email" }, id = "inputEmail" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                @Html.LabelFor(model => model.Email)
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", @placeholder = "Tên Đăng Nhập" }, id = "inputFirstName" })
+                                        @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.TenDangNhap)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại" }, id = "inputLastName" })
+                                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.SDT)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mật Khẩu" }, id = "inputPassword" })
+                                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.MatKhau)
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3 mb-md-0">
+                                        @Html.EditorFor(model => model.XNMatKhau, new { htmlAttributes = new { @class = "form-control", @placeholder = "Xác nhận mật khẩu" }, id = "inputPasswordConfirm" })
+                                        @Html.ValidationMessageFor(model => model.XNMatKhau, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.XNMatKhau)
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3" style="margin-top:15px;">
+                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa Chỉ" }, id = "inputEmail" })
+                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                    @Html.LabelFor(model => model.DiaChi)
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-0">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-block">Đăng ký</button>
+                                </div>
+                            </div>
+
+                        };
+
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <div class="small"><a href="login.html">Đi đến đăng nhập</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

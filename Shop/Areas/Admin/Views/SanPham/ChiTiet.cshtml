@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Model.EF.CT_SanPham>
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p style="margin:20px;">
+    @Html.ActionLink("Thêm Chi Tiết","ThemChiTiet", "ChiTietSP")
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Danh sách sản phẩm
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead style="width:auto;">
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>size</th>
+                    <th>Màu Sắc</th>
+                    <th>Số lượng</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>size</th>
+                    <th>Màu Sắc</th>
+                    <th>Số lượng</th>
+                    <th>#</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Size)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MauSac)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuong)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Cập nhật", "CapNhat", new { id = item.MaSP }) |
+                            @Html.ActionLink("Chi Tiết", "ChiTiet", new { id = item.MaSP }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

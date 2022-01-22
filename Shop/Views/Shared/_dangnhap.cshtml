@@ -1,0 +1,32 @@
+﻿@model Shop.Models.LoginModel
+<div class="col-lg-6">
+    <div class="login-form">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ValidationSummary(false,"", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.TenDN)
+                @Html.EditorFor(model => model.TenDN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.MatKhau)
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-12">
+                <div style="padding-left:5px;" class="custom-control custom-checkbox">
+                    @Html.EditorFor(model => model.NhoMatKhau)
+                    @Html.LabelFor(model => model.NhoMatKhau)
+                    @Html.ValidationMessageFor(model => model.NhoMatKhau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button class="btn">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
+</div>

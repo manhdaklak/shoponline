@@ -1,0 +1,163 @@
+﻿
+@model PagedList.IPagedList<Model.EF.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "SanPham";
+}
+<div class="product-view">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-view-top">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @using (Html.BeginForm("SanPham", "SanPham", FormMethod.Get))
+                                    {
+                                        <div class="product-search">
+                                            <input type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Tìm kiếm">
+                                            <button type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+
+                                    }
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product-short">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Sản phẩm</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="#" class="dropdown-item">Mới nhất</a>
+                                                <a href="#" class="dropdown-item">Mua nhiều nhất</a>
+                                                <a href="#" class="dropdown-item">Phổ biến</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="product-price-range">
+                                        <div class="dropdown">
+                                            <div class="dropdown-toggle" data-toggle="dropdown">Giá</div>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a href="#" class="dropdown-item">$0 to $50</a>
+                                                <a href="#" class="dropdown-item">$51 to $100</a>
+                                                <a href="#" class="dropdown-item">$101 to $150</a>
+                                                <a href="#" class="dropdown-item">$151 to $200</a>
+                                                <a href="#" class="dropdown-item">$201 to $250</a>
+                                                <a href="#" class="dropdown-item">$251 to $300</a>
+                                                <a href="#" class="dropdown-item">$301 to $350</a>
+                                                <a href="#" class="dropdown-item">$351 to $400</a>
+                                                <a href="#" class="dropdown-item">$401 to $450</a>
+                                                <a href="#" class="dropdown-item">$451 to $500</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (Model.EF.SanPham item in Model)
+                    {
+                        var url = "/chi-tiet/" + item.TieuDeSP + "-" + item.MaSP;
+                        <div class="col-md-4">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">@item.TenSP</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="product-detail.html">
+                                        <img src="@item.AnhSP" alt="@item.AnhSP">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="/them-gio-hang?maSP=@item.MaSP&soluong=1"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="@url"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h5 style="font-size:14px;">@item.DonGia<span>₫</span></h5>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Pagination Start -->
+                <div class="col-md-12">
+                    <nav aria-label="Page navigation example">
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                        of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page, searchString = ViewBag.SearchString }))
+
+                    </nav>
+                </div>
+                <!-- Pagination Start -->
+            </div>
+
+            <!-- Side Bar Start -->
+            <div class="col-lg-4 sidebar">
+                <div class="sidebar-widget category">
+                    <h2 class="title">Thể Loại</h2>
+                    @*dùng chung 1 phần layout*@
+                    @RenderPage("/Views/Shared/_leftMenu.cshtml")
+                </div>
+
+                <div class="sidebar-widget widget-slider">
+                    <div class="sidebar-slider normal-slider">
+                        @foreach (Model.EF.SanPham item in Model)
+                        {
+                            var url = "/chi-tiet/" + item.TieuDeSP + "-" + item.MaSP;
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">@item.TenSP</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="product-detail.html">
+                                        <img src="@item.AnhSP" alt="@item.AnhSP">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="/them-gio-hang?maSP=@item.MaSP&soluong=1"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="@url"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h5 style="font-size:14px;">@item.DonGia<span>₫</span></h5>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Mua ngay</a>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+                <div class="sidebar-widget brands">
+                    <h2 class="title">Our Brands</h2>
+                    <ul>
+                        <li><a href="#">Nulla </a><span>(45)</span></li>
+                        <li><a href="#">Curabitur </a><span>(34)</span></li>
+                        <li><a href="#">Nunc </a><span>(67)</span></li>
+                        <li><a href="#">Ullamcorper</a><span>(74)</span></li>
+                        <li><a href="#">Fusce </a><span>(89)</span></li>
+                        <li><a href="#">Sagittis</a><span>(28)</span></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Side Bar End -->
+        </div>
+    </div>
+</div>
+
